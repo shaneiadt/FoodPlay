@@ -9,6 +9,8 @@ import typescript from 'rollup-plugin-typescript2';
 import typescriptCompiler from 'typescript';
 import sveltePreprocessor from 'svelte-preprocess';
 
+import rollup_start_dev from './rollup_start_dev';
+
 const production = !process.env.ROLLUP_WATCH;
 
 export default {
@@ -24,7 +26,7 @@ export default {
 			// enable run-time checks when not in production
 			dev: !production,
 			extensions: ['.svelte'],
-			preprocess: sveltePreprocessor(),
+			preprocess: sveltePreprocessor({ postcss: true }),
 			emitCss: true
 		}),
 		postcss({
@@ -33,7 +35,6 @@ export default {
 			use: [
 				['sass', {
 					includePaths: [
-						'./theme',
 						'./node_modules'
 					]
 				}]
@@ -48,6 +49,8 @@ export default {
 			dedupe: importee => importee === 'svelte' || importee.startsWith('svelte/')
 		}),
 		commonjs({ include: 'node_modules/**' }),
+
+		!production && rollup_start_dev,
 
 		!production && serve({
 			contentBase: './public',

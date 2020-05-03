@@ -7,11 +7,14 @@
     "start": "sirv public"
   },
   "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^2.1.2",
     "@rollup/plugin-commonjs": "11.0.2",
     "@rollup/plugin-node-resolve": "^7.0.0",
     "apollo-boost": "^0.4.7",
     "graphql": "^14.6.0",
     "node-sass": "^4.14.0",
+    "postcss": "^7.0.28",
+    "postcss-load-config": "^2.1.0",
     "rollup": "^1.20.0",
     "rollup-plugin-livereload": "^1.0.0",
     "rollup-plugin-postcss": "^3.1.1",
@@ -26,6 +29,7 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
-    "sirv-cli": "^0.4.4"
+    "sirv-cli": "^0.4.4",
+    "tailwindcss": "^1.4.4"
   }
 }
