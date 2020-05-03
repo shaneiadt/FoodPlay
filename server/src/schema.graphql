@@ -1,0 +1,22 @@
+type Query {
+  recipes(first: Int, search: [String]): [Recipe!]!
+  count: Int!
+}
+
+type Recipe {
+  name: String!
+  ingredients: [String!]!
+  instructions: [String!]!
+  servings: String!
+  image: String!
+  time: Time!
+}
+
+type Time {
+  prep: String!
+  cook: String!
+  active: String!
+  inactive: String!
+  ready: String!
+  total: String!
+}
