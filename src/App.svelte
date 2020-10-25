@@ -1,10 +1,22 @@
-<script lang="ts">
-	export let name: string;
+<script>
+	let recipes;
+	let loading = true;
+
+	fetch('recipes.json')
+	.then(res => res.json())
+	.then(data => {
+		recipes = data.recipes;
+		loading = false;
+	});
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<h1>Recipe Finder</h1>
+	{#if loading}
+		<p>loading....</p>
+	{:else}
+		<p>{recipes.length} recipes to discover!</p>
+	{/if}
 </main>
 
 <style>
