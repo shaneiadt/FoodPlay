@@ -21,15 +21,15 @@ h1 {
 </style>
 
 <script>
+import axios from "axios";
+
 let recipes;
 let loading = true;
 
-fetch("recipes.json")
-  .then((res) => res.json())
-  .then((data) => {
-    recipes = data.recipes;
-    loading = false;
-  });
+axios.get("recipes.json").then(({ data }) => {
+  recipes = data.recipes;
+  loading = false;
+});
 </script>
 
 <main>
