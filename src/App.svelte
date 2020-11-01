@@ -7,16 +7,21 @@ main {
 }
 
 h1 {
-  color: #ff3e00;
-  text-transform: uppercase;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #F12E82;
   font-size: 4em;
-  font-weight: 100;
+  font-weight: 500;
 }
 
 @media (min-width: 640px) {
   main {
     max-width: none;
   }
+}
+
+input {
+  border-radius: 5px;
+  padding: 0.5em;
 }
 </style>
 
@@ -33,10 +38,12 @@ axios.get("recipes.json").then(({ data }) => {
 </script>
 
 <main>
-  <h1>Recipe Finder</h1>
+  <img src="/assets/logo.png" alt="FoodPlay - Recipe Finder" style="width:10em;" />
+  <h1>FoodPlay</h1>
   {#if loading}
     <p>loading....</p>
   {:else}
     <p>{recipes.length} recipes to discover!</p>
   {/if}
+  <input placeholder="Search" />
 </main>
